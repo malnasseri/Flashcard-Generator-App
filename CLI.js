@@ -1,7 +1,7 @@
 // Require the 'inquirer' npm
 var inquirer = require("inquirer");
- 
-
+//importing colors npm 
+var colors = require('colors');
 //importing our instructors
 var flashCards = require("./flashCards.js");
 //importing our questions
@@ -30,7 +30,7 @@ for (var i = 0; i < questions.length; i++) {
 			inquirer.prompt([
 				{
 					type: 'input',
-					message: clozeQuestions[currentQuestion].partial + '\nAnswer: ',
+					message: clozeQuestions[currentQuestion].partial+"\n" + '\n Answer: '.green.inverse,
 					name: 'userAnswer'
 				}
 			]).then(function (answers) {
@@ -40,19 +40,24 @@ for (var i = 0; i < questions.length; i++) {
 							// Check if the user answered correctly
 							if (answers.userAnswer.toLowerCase() === clozeQuestions[currentQuestion].cloze.toLowerCase()) {
 										//adding to our answerRight counter
-										console.log('Your Answer is Correct!');
+										console.log('-------------------------------------');
+										console.log('<<<<< Your Answer is Correct! >>>>>>>'.bold.green);
+										console.log('-------------------------------------');
 										answerRight++;
 
 							} 
 							else {
 										//adding to our answerWrong counter
-										console.log('Nope, Your Answer is Incorrect!');
+										console.log('-------------------------------------');
+										console.log('<<<<< Your Answer is Incorrect! >>>>> '.red.bold);
+										console.log('-------------------------------------');
 										answerWrong++;
 							}
 
 							// This will display the correct answer
-							console.log(clozeQuestions[currentQuestion].full);
-							console.log('-------------------------------------\n');
+
+							console.log("Answer: ".green.bold + clozeQuestions[currentQuestion].full);
+							console.log('-------------------------------------');
 
 
 							if (currentQuestion < clozeQuestions.length - 1) {
@@ -63,13 +68,12 @@ for (var i = 0; i < questions.length; i++) {
 							} 
 
 							else {
-
-									console.log('Game Over!');
-									console.log('-------------------------------------\n');
-									console.log("Here is your Answers: ")
-									console.log('-------------------------------------\n');
-									console.log('Correct Answers: ' + answerRight);
-									console.log('Incorrect Answers: ' + answerWrong);
+									console.log('-------------------------------------');
+									console.log('<<<<<<<<<<< GAME OVER >>>>>>>>>>>>>!'.rainbow.bold.inverse);
+									console.log('-------------------------------------');
+									console.log("((((((( Here is your Answers )))))\n".green.inverse)
+									console.log('<<<<< Correct Answers: '.green + answerRight + " >>>>>>".green);
+									console.log('<<<< Incorrect Answers: '.red + answerWrong + " >>>>>>".red);
 
 									console.log('-------------------------------------\n');
 
@@ -98,7 +102,7 @@ for (var i = 0; i < questions.length; i++) {
 															} 
 															else {
 																// if user answered no to play again 
-																console.log("See You Next Time pal!");
+																console.log(" [[[[[[[ See You Next Time pal! ]]]]]]] ".bold.inverse.blue);
 
 															}
 									})
