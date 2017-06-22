@@ -69,7 +69,7 @@ for (var i = 0; i < questions.length; i++) {
 
 							else {
 									console.log('-------------------------------------');
-									console.log('<<<<<<<<<<< GAME OVER >>>>>>>>>>>>>!'.rainbow.bold.inverse);
+									console.log('<<<<<<<<<<< GAME OVER >>>>>>>>>>>>>'.rainbow.bold.inverse);
 									console.log('-------------------------------------');
 									console.log("((((((( Here is your Answers )))))\n".green.inverse)
 									console.log('<<<<< Correct Answers: '.green + answerRight + " >>>>>>".green);
